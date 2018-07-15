@@ -1,0 +1,19 @@
+package com;
+
+import java.io.IOException;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+
+public class PrintNo {
+
+	public static void main(String[] args) throws IOException{
+		
+		IntStream
+		.range(1,10)
+		.skip(5)
+		.forEach(x->System.out.print(x));
+		
+	}
+
+}

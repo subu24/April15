@@ -1,0 +1,24 @@
+package com;
+
+class  A{
+	
+	public void m1(){
+		System.out.println("HI A");
+	}
+	
+
+}
+
+public class  B extends A{
+	
+	public void m1(int x){
+		System.out.println("HI B");
+	}
+	
+
+	public static void main(String[] args) {
+		
+	}
+	
+	
+}

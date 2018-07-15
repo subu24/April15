@@ -1,0 +1,38 @@
+package com;
+
+class Node{
+	
+	int data;
+	Node left,right;
+	
+	Node(int item){
+		data=item;
+		left=right=null;
+	}
+}
+
+public class BinarySearchTree {
+	
+
+	
+	Node deleteNode(Node root,int key){
+		if(root==null)
+			return root;
+		
+		if(key<root.data)
+			root.left=deleteNode(root.left,key);
+		else if(key>root.data)
+			root.right=deleteNode(root.right, key);
+		else{
+			
+			
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

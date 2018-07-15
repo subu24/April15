@@ -1,0 +1,34 @@
+package com;
+
+public class CrazyTree {
+	
+	//Map<Integer, LinkedList<Node>> bTree= new HashMap<Integer, LinkedList<Node>>();
+	int level;
+	int[] nodes=new int[(int) Math.pow(2, new Double(level))];
+	void buildTree(int level){
+		for(int i=0;i<(int) Math.pow(2, new Double(level-1));i++){
+		nodes[i]=i;
+		}
+		int c=0;
+		for(int i=((int) Math.pow(2, new Double(level-1)))+1;i<((int) Math.pow(2, new Double(level)))-1;i++){
+			nodes[i]=nodes[c]*nodes[c+1];
+			c=c+2;
+		}
+	}
+	
+	int sumAll(int level,int first,int last){
+		int sum=0;
+		int x=(int) Math.pow(2, new Double(level-1));
+		for(int i=x+first;i<=x+last;i++)
+			sum=sum+nodes[i];
+		
+		return sum;
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

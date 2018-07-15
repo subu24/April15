@@ -1,0 +1,51 @@
+package com;
+
+class Node{
+	
+	int data;
+	Node left,right;
+	
+	Node(int item){
+		data=item;
+		left=right=null;
+	}
+}
+
+public class BinarySearchTree {
+	
+
+	
+	Node deleteNode(Node root,int key){
+		if(root==null)
+			return root;
+		
+		if(key<root.data)
+			root.left=deleteNode(root.left,key);
+		else if(key>root.data)
+			root.right=deleteNode(root.right, key);
+		else{
+			if(root.left==null)
+				return root.right;
+			else if(root.right==null)
+				return root.left;
+			
+			root.data=findmin(root.right);
+			
+			root.right=deleteNode(root.right, root.data);
+		}
+		return root;
+	}
+	
+	
+	private int findmin(Node right) {
+		
+		return 0;
+	}
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

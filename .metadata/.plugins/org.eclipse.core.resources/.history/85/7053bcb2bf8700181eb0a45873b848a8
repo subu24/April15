@@ -1,0 +1,23 @@
+package com;
+
+public class ThoughtTest {
+
+	public static void main(String[] args) {
+
+		int n=12;
+		String binaryString = Integer.toBinaryString(n);
+		char a[]=binaryString.toCharArray();
+		int l=a.length;
+		for(int i=0;i<l;i++){
+			char t=a[i]=='0'?'1':'0';
+			if(i>0)
+				a[i-1]= a[i-1]==a[i]?t:a[i-1];
+			if(i<l-1)
+				a[i+1]= a[i+1]==a[i]?t:a[i+1];
+			
+			a[i]=t;	
+		}
+		System.out.println(a);
+	}
+
+}

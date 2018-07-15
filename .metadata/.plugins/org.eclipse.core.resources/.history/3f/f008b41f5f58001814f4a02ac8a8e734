@@ -1,0 +1,16 @@
+package com;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
+public class CrazyTree {
+	
+	Map<Integer, LinkedList<Integer>> bTree= new HashMap<Integer, LinkedList<Integer>>();
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

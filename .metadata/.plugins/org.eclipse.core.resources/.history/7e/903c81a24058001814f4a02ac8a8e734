@@ -1,0 +1,77 @@
+package com;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class MaxInTree {
+
+	Node root;
+	
+	int maxValue(Node node){
+		int maxvalue=0;
+		if(node!=null){
+		int leftMax= maxValue(node.left);
+		int rightMax=maxValue(node.right);
+		
+		if(leftMax>rightMax)
+			maxvalue= leftMax;
+		else
+			maxvalue= rightMax;	
+		
+		if(node.data>maxvalue)
+			maxvalue=node.data;
+		}
+		return maxvalue;
+	}
+	
+	int findSize(Node node, int size){
+		if(node==null)
+			return 0;
+		int left= findSize(node.left,size+1);
+		int right= findSize(node.right,size+1);
+		
+		return left+right+1;
+	}
+	
+	boolean searchElement(Node node,int item){
+		if(node==null)
+			return false;
+		
+		if(node.data==item)
+			return true;
+		
+		return searchElement(node.left, item)|| searchElement(node.right, item);
+		
+		
+	}
+	
+	void printLevelOrder(Node node){
+		if(node==null)
+			return ;
+		
+		Queue<Node> q=new LinkedList<Node>();
+		q.add(node);
+		
+		while(true){
+			
+			
+		}
+		
+	}
+	public static void main(String[] args) {
+		MaxInTree tree= new MaxInTree();
+		 tree.root = new Node(1);
+	        tree.root.left = new Node(2);
+	        tree.root.right = new Node(3);
+	        tree.root.left.left = new Node(4);
+	        tree.root.left.right = new Node(5);
+	        tree.root.left.right.right = new Node(15);
+	        tree.root.right.left = new Node(6);
+	        tree.root.right.right = new Node(7);
+	        tree.root.right.left.right = new Node(8);
+	        
+	       // int m=tree.searchElement(tree.root,6);
+	        System.out.println(tree.findSize(tree.root,0));
+	}
+
+}

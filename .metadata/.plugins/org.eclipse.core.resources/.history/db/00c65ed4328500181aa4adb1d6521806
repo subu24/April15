@@ -1,0 +1,26 @@
+package future;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class CallableDemo {
+
+	public static void main(String[] args) {
+		ExecutorService executor= Executors.newCachedThreadPool();
+		
+		executor.submit(new Callable<Integer>() {
+
+			@Override
+			public Integer call() throws Exception {
+				System.out.println("Thread Start....");
+				
+				System.out.println("Finishied");
+				return null;
+			}
+			
+		});
+		
+	}
+
+}

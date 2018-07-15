@@ -1,0 +1,65 @@
+package com;
+
+class Node{
+	
+	int data;
+	Node right,left;
+	Node(int data){
+		this.data=data;
+		right=left=null;
+	}
+	
+}
+
+public class Siblings {
+	
+
+	
+	Node root;
+	
+	boolean isSiblings(Node node,int a,int b){
+		if(node==null)
+			return false;
+		boolean x = false, y = false, z = false;
+		if(node.left!=null && node.right!=null){
+		
+		 x=(node.left.data==a && node.right.data==b) || (node.left.data==b && node.right.data==a);
+		
+		 if(node.left!=null)
+		 y=isSiblings(node.left,a,b);
+		 
+		 if(node.right!=null)
+		 z=isSiblings(node.right,a,b);
+		
+		}
+		return (x|| y|| z);
+		
+	} 
+	
+	boolean isCousin(Node node,int a,int b){
+		return false;
+		
+	}
+
+	public static void main(String[] args) {
+
+		Siblings tree = new Siblings();
+		
+        tree.root = new Node(1);
+        tree.root.left = new Node(2);
+        tree.root.right = new Node(3);
+        tree.root.left.left = new Node(4);
+        tree.root.left.right = new Node(5);
+        tree.root.left.right.right = new Node(15);
+        tree.root.right.left = new Node(6);
+        tree.root.right.right = new Node(7);
+        tree.root.right.left.right = new Node(8);
+ 
+        
+        if (tree.isSiblings(tree.root, 4, 5))
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+	}
+
+}

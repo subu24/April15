@@ -1,0 +1,13 @@
+package com;
+
+public class ThoughtTest {
+
+	public static void main(String[] args) {
+
+		int n=1000;
+		String binaryString = Integer.toBinaryString(n);
+
+		System.out.println(binaryString);
+	}
+
+}

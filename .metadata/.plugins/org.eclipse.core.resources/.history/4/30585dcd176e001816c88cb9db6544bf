@@ -1,0 +1,50 @@
+package com;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class Skip5 {
+
+	public static void main(String[] args) {
+
+		/*System.out.println(IntStream.range(1, 20)
+		.skip(10)
+		.sum());*/
+		/// 5. Stream from Array, sort, filter and print
+		String[] names = {"Al", "Ankit", "Kushal", "Brent", "Sarika", "amanda", "Hans", "Shivika", "Sarah"};
+		
+		Arrays.stream(names)
+		.filter(x->x.startsWith("A"))
+		.sorted()
+		.forEach(System.out:: println);
+		
+		/*List<String> people = Arrays.asList("Al", "Ankit", "Brent", "Sarika", "amanda", "Hans", "Shivika", "Sarah");
+
+		people
+			.stream()
+			.map(String::toLowerCase)
+			.filter(x->x.startsWith("a"))
+			.sorted()
+			.forEach(System.out::println);*/
+		
+		
+		try {
+			Stream<String> bands = Files.lines(Paths.get("E:\\April15\\Java8Stream\\band.txt"));
+			
+			bands.sorted()
+			.filter(x->x.length()>13)
+			.forEach(System.out::println);
+			bands.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

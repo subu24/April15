@@ -1,0 +1,9 @@
+package com;
+
+public class PrintNo {
+
+	public static void main(String[] args) {
+		Thread t=new Thread();
+	}
+
+}

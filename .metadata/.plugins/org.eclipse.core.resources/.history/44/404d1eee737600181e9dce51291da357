@@ -1,0 +1,24 @@
+package com;
+
+class Parent{
+	
+	
+	
+}
+
+public class Child {
+	
+	void print(String str){
+		System.out.println(str);
+	}
+	
+	void print(Object obj){
+		System.out.println(obj.toString());
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
