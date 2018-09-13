@@ -1,16 +1,16 @@
 package com;
 
-class Base {
-	private void foo() {System.out.println("Base");}
+class parent1 {
+	public void foo() {System.out.println("Base");}
 }
  
-class Derived extends Base {
+class child extends parent1 {
 	public void foo() {System.out.println("Derived");} // works fine
 }
  
 public class Main {
     public static void main(String args[]) {
-    	/*Derived d = new Base();
-        d.foo();*/
+    	parent1 d= new parent1();
+        d.foo();
     }
 }

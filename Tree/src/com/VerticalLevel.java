@@ -1,0 +1,84 @@
+package com;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+/*Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function is mentioned above.*/
+
+// FUNCTION CODE
+/* A Binary Tree node
+class Node
+{
+    int data;
+    Node left, right;
+   Node(int item)    {
+        data = item;
+        left = right = null;
+    }
+} */
+/* Should print vertical order such that each vertical line
+    is separated by $ */
+class GfG
+{
+    int left;
+    int right;
+    void verticalOrder(Node node) 
+    {
+        left = 0;
+        
+        right = 0;
+        
+        Map<Integer, List<Integer>> map = new HashMap<>(); 
+        
+        fillLevel(node, 0, map);
+        
+        for (int i = left; i <= right; i++) {
+            List<Integer> nodes = map.get(i);
+            
+            for (int n : nodes) {
+                System.out.print(n + " ");
+            }
+            System.out.print("\n");
+        }
+    }
+    
+    void fillLevel(Node node, int level, Map<Integer, List<Integer>> map)
+    {
+        if (node != null) {
+            left = Math.min(left, level);
+            
+            right = Math.max(right, level);
+            
+            List<Integer> nodes = map.getOrDefault(level, new LinkedList<>());
+            
+            nodes.add(node.data);
+            
+            map.put(level, nodes);
+            
+            fillLevel(node.left, level-1, map);
+            
+            fillLevel(node.right, level+1, map);
+        }
+    }
+    
+    public static void main(String[] args) {
+    	 
+        // TO DO Auto-generated method stub
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        root.right.right = new Node(7);
+        root.right.left.right = new Node(8);
+        root.right.right.right = new Node(9);
+        System.out.println("Vertical Order traversal is");
+        GfG ver=new GfG();
+        ver.verticalOrder(root);
+    }
+}

@@ -1,0 +1,51 @@
+package com.he.shoppingCart;
+
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Cart {
+
+	Map<Product, Integer> itemOnCart=new HashMap<Product, Integer>();
+	Inventory inventory=Inventory.getInstance(); 
+	public Cart() {
+		/**/
+	}
+	
+	public void addItem(Product product, Integer amount) {
+		if(amount>0){
+			int currentAmount=inventory.getAvailableAmount(product);
+			if(currentAmount<=amount){
+				if(itemOnCart.containsKey(product))
+					itemOnCart.put(product, amount);
+				else
+				{
+					itemOnCart.put(product,itemOnCart.get(product)+amount );	
+				}
+			}
+		}
+	}
+	
+	public void removeItem(Product product) {
+		if(itemOnCart.containsKey(product)){
+			itemOnCart.remove(product);
+		}
+	}
+	
+	public void generateInvoice() {
+		DecimalFormat df2 = new DecimalFormat(".##");
+		itemOnCart.forEach((prod,amt)-> System.out.println(prod.getName()+" "+amt+" "+df2.format(prod.getPrice()*amt)));
+	}
+	
+	public void checkOut() {
+		if(!itemOnCart.isEmpty()){
+			inventory.removeItems(itemOnCart);
+			emptyCart();
+		}
+		
+	}
+	public void emptyCart() {
+		itemOnCart.clear();
+	}
+	
+}

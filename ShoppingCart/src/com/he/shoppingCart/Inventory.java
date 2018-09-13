@@ -1,0 +1,67 @@
+package com.he.shoppingCart;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+public class Inventory {
+	Map<Product, Integer> itemOnInv=new HashMap<Product, Integer>();
+	
+	private Inventory() {
+		
+	}
+	public static volatile Inventory instance;
+	
+	public static Inventory getInstance() {
+		if(instance==null){
+			synchronized (Inventory.class) {
+				if(instance==null){
+					instance=new Inventory();
+				}
+			}
+		}
+		return instance;
+	}
+	
+	public void addItems(Map<Product, Integer> items)  {
+		for(Map.Entry<Product, Integer> entry: items.entrySet()){
+			if(entry.getValue()>0){
+			if(!itemOnInv.containsKey(entry.getKey())){
+				itemOnInv.put(entry.getKey(), entry.getValue());
+			}else
+			{
+				itemOnInv.put((Product)entry.getKey(),itemOnInv.get(entry.getKey())+entry.getValue());	
+			}
+			}else{
+				throw new IllegalArgumentException("Must be a greater then 0");
+			}
+		}
+		
+	}
+	
+	public void removeItems(Map<Product, Integer> items) {
+		for(Map.Entry<Product, Integer> entry: items.entrySet()){
+			if(entry.getValue()>0){
+				if(itemOnInv.containsKey(entry.getKey())){
+					if(entry.getValue()<items.get(entry.getKey())){
+						itemOnInv.put(entry.getKey(), items.get(entry.getKey())-entry.getValue());
+					}else if(entry.getValue()==items.get(entry.getKey())){
+						itemOnInv.remove(entry.getKey());
+					}else{
+						throw new IllegalArgumentException("Deleted item More than available");
+					}	
+				}	
+			}else{
+				throw new IllegalArgumentException("Must be a greater then 0");
+			}
+		}
+		
+	}
+	
+	public Integer getAvailableAmount(Product product) {
+		return itemOnInv.get(product);
+	}
+	
+	
+	
+}

@@ -1,0 +1,34 @@
+package com.travarsal;
+
+import java.util.LinkedList;
+
+public class BFSGraph {
+	
+	private int V;
+	private LinkedList<Integer> adjList[];
+	
+	public BFSGraph(int v) {
+		
+		for(int i=0;i<v;i++){
+			V=v;
+			adjList=new LinkedList[v]; 
+			adjList[i]=new LinkedList();
+		}
+	}
+	
+	void addEdge(int v,int w){
+		adjList[v].add(w);
+	}
+	
+	int BFS(int node){
+		
+		
+		return 0;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,11 @@
+package com;
+
+import static java.lang.System.*;
+
+public class TestSet {
+
+	public static void main(String[] args) { 
+		out.print("A");
+	}
+
+}

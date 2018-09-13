@@ -1,0 +1,58 @@
+package com.he.shoppingCart;
+
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Cart {
+
+	Map<Product, Integer> itemOnCart=new HashMap<Product, Integer>();
+	Inventory inventory=Inventory.getInstance(); 
+	public Cart() {
+		/**/
+	}
+	
+	public void addItem(Product product, Integer amount) {
+		if(amount>0){
+			int currentAmount=inventory.getAvailableAmount(product);
+			if(currentAmount<=amount){
+				if(itemOnCart.containsKey(product))
+					itemOnCart.put(product, amount);
+				else
+				{
+					itemOnCart.put(product,itemOnCart.get(product)+amount );	
+				}
+			}
+		}
+	}
+	
+	public void removeItem(Product product) {
+		if(itemOnCart.containsKey(product)){
+			itemOnCart.remove(product);
+		}
+	}
+	
+	public void generateInvoice() {
+		DecimalFormat df2 = new DecimalFormat(".##");
+		double total=0.0;
+		for(Map.Entry<Product, Integer> entry: itemOnCart.entrySet()){
+		    String pName=((Product)entry.getKey()).getName();
+		    double pPrice=((Product)entry.getKey()).getPrice();
+		    System.out.println(pName+" " +df2.format(pPrice)+" " + df2.format(pPrice*entry.getValue()));
+		    total=total+(pPrice*entry.getValue());
+		}
+		System.out.println("Total price: "+df2.format(total));
+	}
+	
+	public void checkOut() {
+		if(!itemOnCart.isEmpty()){
+			inventory.removeItems(itemOnCart);
+			emptyCart();
+		}
+		
+	}
+	public void emptyCart() {
+		itemOnCart.clear();
+	}
+	
+}

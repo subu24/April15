@@ -1,0 +1,16 @@
+package com;
+
+import static java.lang.System.*;
+
+public class TestSet {
+
+	public static void main(String[] args) { 
+		Employee emp1=new Employee(101, "SUBU");
+		Employee emp2=new Employee(101, "SUBU");
+		Employee emp3=new Employee(103, "SUBU");
+		Employee emp4=new Employee(104, "SUBU");
+		Employee emp5=new Employee(105, "SUBU");
+
+	}
+
+}

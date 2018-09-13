@@ -12,9 +12,9 @@ class Parent{
 
 public class Child {
 	
-	void print(String str){
-		System.out.println("stringjhgsj");
-	}
+	//void print(String str){
+	//	System.out.println("stringjhgsj");
+	//}
 	
 	void print(Object obj){
 		System.out.println("objjjjj");

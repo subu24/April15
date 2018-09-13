@@ -1,0 +1,45 @@
+package com.he.shoppingCart;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Cart {
+
+	Map<Product, Integer> itemOnCart=new HashMap<Product, Integer>();
+	Inventory inventory; 
+	public Cart() {
+		/**/
+	}
+	
+	public void addItem(Product product, Integer amount) {
+		if(amount>0){
+			int currentAmount=inventory.getAvailableAmount(product);
+			if(currentAmount<=amount){
+			if(itemOnCart.containsKey(product))
+			itemOnCart.put(product, amount);
+			else
+			{
+				itemOnCart.put(product,itemOnCart.get(product)+1 );	
+				
+			}
+			}
+		}
+	}
+	
+	public void removeItem(Product product) {
+		/**/
+	}
+	
+	public void generateInvoice() {
+		/**/
+	}
+	
+	public void checkOut() {
+		/**/
+		
+	}
+	public void emptyCart() {
+		/**/
+	}
+	
+}

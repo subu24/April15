@@ -1,0 +1,36 @@
+package com.he.shoppingCart;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Cart {
+
+	Map<Product, Integer> itemOnCart=new HashMap<Product, Integer>();
+	
+	public Cart() {
+		/**/
+	}
+	
+	public void addItem(Product product, Integer amount) {
+		if(amount>0){
+			itemOnCart.put(product, amount);
+		}
+	}
+	
+	public void removeItem(Product product) {
+		/**/
+	}
+	
+	public void generateInvoice() {
+		/**/
+	}
+	
+	public void checkOut() {
+		/**/
+		
+	}
+	public void emptyCart() {
+		/**/
+	}
+	
+}

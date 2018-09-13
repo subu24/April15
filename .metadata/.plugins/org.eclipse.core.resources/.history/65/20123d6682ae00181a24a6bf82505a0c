@@ -1,0 +1,21 @@
+package com;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
+public class TestSet {
+
+	public static void main(String[] args) { 
+		Set<String> listSet=new HashSet<String>();
+		ArrayList l=new ArrayList();
+		listSet.add("Subarna");
+		boolean b=listSet.add(new String("Subarna"));
+		
+		System.out.println(listSet);
+		l.add(12);
+		l.add(new Integer(12));
+		System.out.println(l);
+	}
+
+}
